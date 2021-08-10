@@ -6,4 +6,4 @@ $DNSServers = @(
     ([IPAddress]$arg2).IPAddressToString
 )
  
-Set-DNSClientServerAddress -InterfaceAlias "Ethernet0" -ServerAddresses $DNSServers
+Set-DNSClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses $DNSServers
