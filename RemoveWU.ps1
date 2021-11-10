@@ -1,1 +1,1 @@
-wusa /uninstall /kb:$arg1 /forcerestart
+wusa /uninstall /kb:$kb[0] /forcerestart
