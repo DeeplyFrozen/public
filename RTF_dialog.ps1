@@ -1,8 +1,8 @@
-$Title = "New Video Notification"
+$Title = "Notification"
 $SoftwarecenterShortcut= "softwarecenter:SoftwareID=ScopeId_8E25450A-4C7E-4508-B501-B3F0E2C91541/Application_abd1dcbe-275a-4be1-9800-1c1e9a0ce7ff"
 $AudioSource = "ms-winsoundevent:Notification.Default"
 $SubtitleText = $args[0]
-$BodyText = "Please watch this video while the vehicle is stopped."
+$BodyText = "Please have a great day!"
 $HeaderFormat = "ImageOnly" 
 
 
@@ -44,8 +44,8 @@ if (!(Test-Path -Path "$RegPath\$AppId")) {
 <toast scenario="reminder">
     <visual>
     <binding template="ToastGeneric">
-        <text>New Video Notification</text>
-        <text placement="attribution">from the desk of the Police Chief</text>        
+        <text>New Notification</text>
+        <text placement="attribution">from the Faronics Help Desk team.</text>        
         <group>
             <subgroup>
                 <text hint-style="title" hint-wrap="true" >$Title</text>
@@ -71,7 +71,7 @@ if (!(Test-Path -Path "$RegPath\$AppId")) {
             <selection id="480" content="8 hours"/>
         </input>
         <action activationType="system" arguments="snooze" hint-inputId="snoozeTime" content=""/>
-      <action content="Watch Now" activationType="protocol" arguments="$url" />
+      <action content="Dismiss" activationType="protocol" arguments="$url" />
       
     </actions>
  
@@ -117,4 +117,3 @@ $ToastXml = New-Object -TypeName Windows.Data.Xml.Dom.XmlDocument
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($app).Show($ToastXml) 
- 
