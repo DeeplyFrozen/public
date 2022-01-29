@@ -1,4 +1,7 @@
 @echo off
+
+wmic computersystem get chassisskunumber, dnshostname, domain, model, numberoflogicalprocessors, systemtype, totalphysicalmemory, username /format:list >> temp.txt
+
 wmic path Win32_OperatingSystem get caption,Freephysicalmemory, freespaceinpagingfiles, freevirtualmemory, Lastbootuptime, serialnumber, version, numberofprocesses /format:list >> temp.txt
 
 wmic cpu get name /format:list >> temp.txt
