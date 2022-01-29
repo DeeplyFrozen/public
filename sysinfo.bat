@@ -14,12 +14,11 @@ wmic bios get serialnumber /format:list >> temp.txt
 
 wmic path SoftwareLicensingService get OA3xOriginalProductKey /format:list >> temp.txt
 
-wevtutil qe system "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True >> temp.txt
-wevtutil qe application "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True >> temp.txt
-
 
 @echo on
 type temp.txt
+wevtutil qe system "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True
+wevtutil qe application "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True 
 set |findstr Path=
 
 @echo off
