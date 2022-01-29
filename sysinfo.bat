@@ -1,13 +1,13 @@
 @echo off
-wmic path Win32_OperatingSystem get caption,Freephysicalmemory, freespaceinpagingfiles, freevirtualmemory, Lastbootuptime, serialnumber, version, numberofprocesses  >> temp.txt
+wmic path Win32_OperatingSystem get caption,Freephysicalmemory, freespaceinpagingfiles, freevirtualmemory, Lastbootuptime, serialnumber, version, numberofprocesses /format:list >> temp.txt
 
-wmic cpu get name >> temp.txt
+wmic cpu get name /format:list >> temp.txt
 
-wmic memorychip get devicelocator, manufacturer, speed, serialnumber, partnumber >> temp.txt
+wmic memorychip get devicelocator, manufacturer, speed, serialnumber, partnumber /format:list >> temp.txt
 
-wmic bios get serialnumber >> temp.txt
+wmic bios get serialnumber /format:list >> temp.txt
 
-wmic path SoftwareLicensingService get OA3xOriginalProductKey >> temp.txt
+wmic path SoftwareLicensingService get OA3xOriginalProductKey /format:list >> temp.txt
 
 @echo on
 type temp.txt
