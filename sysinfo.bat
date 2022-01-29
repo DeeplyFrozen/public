@@ -16,7 +16,10 @@ wmic path SoftwareLicensingService get OA3xOriginalProductKey /format:list >> te
 
 curl -o temp.ps1 https://raw.githubusercontent.com/DeeplyFrozen/public/main/consumption.ps1
 
+powershell Set-ExecutionPolicy Unrestricted
 powershell temp.ps1 >> temp.txt
+powershell Set-ExecutionPolicy Remotesigned
+
 
 @echo on
 type temp.txt
