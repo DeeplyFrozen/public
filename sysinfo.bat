@@ -8,6 +8,8 @@ wmic cpu get name /format:list >> temp.txt
 
 wmic memorychip get devicelocator, manufacturer, speed, serialnumber, partnumber /format:list >> temp.txt
 
+wmic logicaldisk get caption, drivetype, filesystem, freespace, lasterrorcode, name, size, volumename /format:list >> temp.txt
+
 wmic bios get serialnumber /format:list >> temp.txt
 
 wmic path SoftwareLicensingService get OA3xOriginalProductKey /format:list >> temp.txt
