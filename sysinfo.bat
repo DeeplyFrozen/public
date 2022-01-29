@@ -17,8 +17,8 @@ wmic path SoftwareLicensingService get OA3xOriginalProductKey /format:list >> te
 
 @echo on
 type temp.txt
-wevtutil qe system "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True
-wevtutil qe application "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True 
+wevtutil qe system "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True /format:text
+wevtutil qe application "/q:*[System [Level=2 or Level=1]]" /f:text /c:5 /rd:True /format:text
 set |findstr Path=
 
 @echo off
