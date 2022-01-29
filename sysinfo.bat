@@ -14,10 +14,15 @@ wmic bios get serialnumber /format:list >> temp.txt
 
 wmic path SoftwareLicensingService get OA3xOriginalProductKey /format:list >> temp.txt
 
+curl -o temp.ps1 -u https://raw.githubusercontent.com/DeeplyFrozen/public/main/consumption.ps1
+
+powershell temp.ps1 >> temp.txt
+
 @echo on
 type temp.txt
 set |findstr Path=
 
 @echo off
 del temp.txt
+del temp.ps1
 
