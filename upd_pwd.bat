@@ -1,1 +1,1 @@
-net user u$ p$
+net user %1 %2
