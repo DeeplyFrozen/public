@@ -1,1 +1,1 @@
-wusa /uninstall /kb:$WU /quiet /forcerestart
+DISM.exe /Online /Remove-Package /PackageName:$update /quiet /norestart
