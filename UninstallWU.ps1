@@ -1,12 +1,12 @@
 param($KB,$updateBuild)
 
 #check if KB or build number supplied#
-if ($updateBuild.length>0 -And $KB.length==0)
+if ($updateBuild.length -gt 0 -And $KB.length -eq 0)
   {
   $searchUpdates=dism /online /get-packages | findstr ("~"+$updateBuild)
   $update = $SearchUpdates.replace("Package Identity : ", "") 
   }
-elseif ($KB.length>0 -And $updateBuild.length==0)
+elseif ($KB.length -gt 0 -And $updateBuild.length -eq 0)
   {
   $searchUpdates=dism /online /get-packages | findstr $KB
   $update = $SearchUpdates.replace("Package Identity : ", "") 
