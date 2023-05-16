@@ -12,7 +12,7 @@ elseif ($KB.length -gt 0 -And $updateBuild.length -eq 0)
   $update = $SearchUpdates.replace("Package Identity : ", "") 
   }
 else
-  write-output("Please check your parameters and try again. Supply a KB or build number for newer cumulative updates.")
+  {write-output("Please check your parameters and try again. Supply a KB or build number for newer cumulative updates.")}
   
 DISM.exe /Online /Remove-Package /PackageName:$update /quiet /norestart
 write-output("Removing: "+$update)
