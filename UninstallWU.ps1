@@ -1,6 +1,19 @@
-#dism /online /get-packages | findstr "Package_for"#
-#$update = $SearchUpdates.replace("Package Identity : ", "") | findstr "KBXXXXXXX"#
+param($KB,$updateBuild)
 
-param($update)
+#check if KB or build number supplied#
+if ($updateBuild.length>0 -And $KB.length==0)
+  {
+  $searchUpdates=dism /online /get-packages | findstr ("~"+$updateBuild)
+  $update = $SearchUpdates.replace("Package Identity : ", "") 
+  }
+elseif ($KB.length>0 -And $updateBuild.length==0)
+  {
+  $searchUpdates=dism /online /get-packages | findstr $KB
+  $update = $SearchUpdates.replace("Package Identity : ", "") 
+  }
+else
+  write-output("Please check your parameters and try again. Supply a KB number or build number for newer cumulative updates.")
+  
 DISM.exe /Online /Remove-Package /PackageName:$update /quiet /norestart
-write-output($update)
+write-output("Removing: "+$update)
+write-output("This machine needs to be restarted to complete the operation.")
