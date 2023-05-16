@@ -1,5 +1,7 @@
 param($KB,$updateBuild)
 
+write-output($KB,$updateBuild)
+
 #check if KB or build number supplied#
 if ($updateBuild.length -gt 0 -And $KB.length -eq 0)
   {
