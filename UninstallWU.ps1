@@ -6,15 +6,15 @@ write-output("KB:"+$KB,"Build:"+$Build)
 if ($Build.length -gt 0 -And $KB.length -eq 0)
   {
   write-output("We found a build string, and will find the matching cumulative update.")
-  $searchUpdates=dism /online /get-packages | findstr ("~"+$Build)
-  write-output("The update we found was: "+$searchUpdates)
+  $searchUpdates=dism /online /get-packages | findstr ("~19041."+$Build)
+  write-output("The update we found was "+$searchUpdates)
   $update = $SearchUpdates.replace("Package Identity : ", "") 
   }
 elseif ($KB.length -gt 0 -And $Build.length -eq 0)
   {
   write-output("We found a KB number, and will find the matching cumulative update.")
   $searchUpdates=dism /online /get-packages | findstr $KB
-  write-output("The update we found was: "+$searchUpdates)
+  write-output("The update we found was "+$searchUpdates)
   $update = $SearchUpdates.replace("Package Identity : ", "") 
   }
 else
