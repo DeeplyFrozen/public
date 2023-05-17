@@ -1,16 +1,16 @@
-param($KB,$updateBuild)
+param($KB,$Build)
 
-write-output($KB,$updateBuild)
+write-output("KB:"+$KB,"Build:"+$Build)
 
 #check if KB or build number supplied#
-if ($updateBuild.length -gt 0 -And $KB.length -eq 0)
+if ($Build.length -gt 0 -And $KB.length -eq 0)
   {
   write-output("We found a build string, and will find the matching cumulative update.")
-  $searchUpdates=dism /online /get-packages | findstr ("~"+$updateBuild)
+  $searchUpdates=dism /online /get-packages | findstr ("~"+$Build)
   write-output("The update we found was: "+$searchUpdates)
   $update = $SearchUpdates.replace("Package Identity : ", "") 
   }
-elseif ($KB.length -gt 0 -And $updateBuild.length -eq 0)
+elseif ($KB.length -gt 0 -And $Build.length -eq 0)
   {
   write-output("We found a KB number, and will find the matching cumulative update.")
   $searchUpdates=dism /online /get-packages | findstr $KB
